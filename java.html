@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <body>
 
 <!-- Navbar (sit on top) -->
@@ -41,6 +41,72 @@
 <button type="button" onclick="myFunction2()">Submit</button>
 <p id="demo3"></p>
 
+
+<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+ฺิ<br>
+<canvas id="barChart" style="width:100%;max-width:700px"></canvas>
+
+<script>
+const xyValues = [
+  {x:50, y:7},
+  {x:60, y:8},
+  {x:70, y:8},
+  {x:80, y:9},
+  {x:90, y:9},
+  {x:100, y:9},
+  {x:110, y:10},
+  {x:120, y:11},
+  {x:130, y:14},
+  {x:140, y:14},
+  {x:150, y:15}
+];
+
+new Chart("myChart", {
+  type: "scatter",
+  data: {
+    datasets: [{
+      pointRadius: 4,
+      pointBackgroundColor: "rgb(0,0,255)",
+      data: xyValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      xAxes: [{ticks: {min: 40, max:160}}],
+      yAxes: [{ticks: {min: 6, max:16}}],
+    }
+  }
+});
+</script>
+
+<script>
+  const xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+new Chart("barChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+      borderColor: "red",
+      fill: false
+    },{
+      data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+      borderColor: "green",
+      fill: false
+    },{
+      data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+      borderColor: "blue",
+      fill: false
+    }]
+  },
+  options: {
+    legend: {display: false}
+  }
+});
+  </script>
+
 <!-- End page content -->
 </div>
 <!-- Footer -->
@@ -48,43 +114,7 @@
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
 
-<script>
-  //document.getElementById("demo").innerHTML = "Hello World";
 
-  function printAlphabets() {
-  // สร้างตัวแปรเพื่อเก็บตัวอักษร A-Z
-  const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-  // ใช้ forEach เพื่อวนลูปผ่านทุกตัวอักษร
-  alphabets.split('').forEach((alphabet, index) => {
-    // ใช้ setTimeout เพื่อกำหนดระยะเวลาการแสดงผล
-    setTimeout(() => {
-      document.getElementById("demo").innerHTML = alphabet;
-      console.log(alphabet);
-    }, index * 1000); // 1000 milliseconds = 1 วินาที
-  });
-}
-printAlphabets();
-
-  function myFunction() {
-    document.getElementById("demo2").innerHTML = "Hello World";
-}
-
-  function myFunction2() {
-  // Get the value of the input field with id="numb"
-  let x = document.getElementById("numb").value;
-  // If x is Not a Number or less than one or greater than 10
-  let text;
-  if (isNaN(x) || x < 1 || x > 10) {
-    text = "Input not valid";
-  } else {
-    text = "Input OK";
-  }
-  document.getElementById("demo3").innerHTML = text;
-}
-
-
-</script>
 
 </body>
 </html>
