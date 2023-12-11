@@ -5,46 +5,141 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<body>
+<link rel="stylesheet" href="styles.css">
+ 
+</head>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-    <a href="#home" class="w3-bar-item w3-button"><b>BR</b> Architects</a>
-    <!-- Float links to the right. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a href="index.html" class="w3-bar-item w3-button">index</a>
-      <a href="java.html" class="w3-bar-item w3-button">java</a>
-      <a href="api.html" class="w3-bar-item w3-button">api</a>
+
+
+<body>
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+      <a href="index.html" class="w3-bar-item w3-button"><b>Profile</b></a>
+      <!-- Float links to the right. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="index.html" class="w3-bar-item w3-button">index</a>
+        <a href="java.html" class="w3-bar-item w3-button">JavaScript</a>
+        <a href="api.html" class="w3-bar-item w3-button">Api</a>
+      </div>
     </div>
   </div>
+
+
+<div class="box">
+  <h2 style="color: black;">Just change A - Z</h2>
+  <button onclick="generateRandomLetter()" class="w3-button w3-purple w3-section">คลิ๊ก</button>
+  <p id="result1"></p>
 </div>
-<!-- Page content -->
-<div class="w3-content w3-padding-64 w3-margin-top" style="max-width:1564px">
-
-<h1>The Document Object</h1>
-
-<hr>
-<h2>Just change A - Z</h2>
-<p id="demo">Hi</p>
-
-<hr>
-<h2>Click to change</h2>
-<p id="demo2">Hi</p>
-<button onclick="myFunction()">Click me</button>
-
-<hr>
-<h2>Calculate number</h2>
-<input id="numb">
-<button type="button" onclick="myFunction2()">Submit</button>
-<p id="demo3"></p>
 
 
-<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-ฺิ<br>
-<canvas id="barChart" style="width:100%;max-width:700px"></canvas>
+<div class="box">
+  <h2 style="color: black;">คำนวณความยาวเส้นรอบวงกลม </h2>
+  <input id="input" type="text" placeholder="ป้อนรัศมี" fdprocessedid="1pjfaa">
+  <button onclick="calculateAndDisplayCircumference()" class="w3-button w3-blue w3-section" fdprocessedid="kjvwr">ส่งคำตอบ</button>
+  <p>ความยาวเส้นรอบวง : <span id="result2" style="color: red;"></span></p>
+</div>
+
+<div class="box">
+  <h2 style="color: black;">คำนวณวันต่อนาที  </h2>
+  <input type="text" id="daysInput"  placeholder="กรอกจำนวนวัน">
+  <p><span id="show2"></span></p>
+  <button onclick="dayToSeconds()"  class="w3-button w3-green w3-section">ส่งคำตอบ</button>
+</div>
+
+<div class="box">
+  <h2 style="color: black;">สุ่มเลขลูกเต๋า</h2>
+  <button onclick="rollAndDisplayDice()" class="w3-button w3-purple w3-section">คลิ๊ก</button>
+  <p id="diceResult"></p>
+</div>
+
+<div class="box">
+  <h2 style="color: black;">ดูเกรด </h2>
+  <input type="text" id="scoreInput" placeholder="กรอกคะแนนของคุณ" fdprocessedid="fs6hfm">
+  <button onclick="calculateGrade()"  class="w3-button w3-red w3-section">ส่งคำตอบ</button>
+  <p id="result3" style="color: black">เกรดของคุณคือ :</p>
+</div>
+
+<div class="box">
+  <h2 style="color: black;">แปลงอุณหภูมิ</h2>
+    <input type="number" id="temperatureInput" placeholder="ป้อนอุณหภูมิ" step="0.1" fdprocessedid="m4gdo" >
+    <button onclick="temperature()"  class="w3-button w3-blue w3-section">ส่งคำตอบ</button>
+    <p id="temperature">แปลงอุณหภูมิเป็นฟาเรนไฮต์ : </p>
+</div>
+
+
+<div class="w3-content w3-padding-100 w3-margin-top w3-center box"> 
+<canvas id="myChart" style="width:100%;max-width:800px; " ></canvas> 
+</div>
+
+<div class="w3-content w3-padding-100 w3-margin-top w3-center box">
+  <canvas id="barChart" style="width:100%;max-width:700px"></canvas>
+</div>
+
+
+
+
+<script>
+  function generateRandomLetter() {
+      const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+      const randomIndex = Math.floor(Math.random() * alphabet.length);
+      const randomLetter = alphabet[randomIndex];
+      document.getElementById('result1').textContent = `Random Letter: ${randomLetter}`;
+    }
+
+function calculateAndDisplayCircumference() {
+  let inputElement = document.getElementById("input");
+  let resultElement = document.getElementById("result2");
+
+  let radius = parseFloat(inputElement.value);
+
+  if (!isNaN(radius)) {
+    let circumference = calculateCircleCircumference(radius);
+    resultElement.textContent = circumference.toFixed(2);
+  } else {
+    resultElement.textContent = "กรุณาใส่ค่าที่ถูกต้อง";
+  }
+} 
+function calculateCircleCircumference(radius) {
+  return 2 * Math.PI * radius;
+}
+function dayToSeconds() {
+    let inputDays = document.getElementById("daysInput").value;
+    if (!isNaN(inputDays)) {
+        let seconds = inputDays * 86400;
+        document.getElementById("show2").innerText = `จำนวนวัน : ${inputDays} วัน, ${seconds} นาที`;
+    } else {
+        alert("โปรดป้อนจำนวนวันที่ถูกต้อง");
+    }
+}
+function rollDice() {
+    const randomNumber = Math.floor(Math.random() * 6) + 1;
+    return randomNumber;
+  }
+
+  function rollAndDisplayDice() {
+    const result = rollDice();
+    document.getElementById("diceResult").innerHTML = `Dice roll results : ${result}`;
+}
+function calculateGrade() {
+            var score = parseFloat(document.getElementById("scoreInput").value);
+            var grade = (score >= 80) ? "A" : (score >= 70) ? "B" : (score >= 60) ? "C" : (score >= 50) ? "D" : "F";
+            document.getElementById("result3").innerHTML = "เกรดของคุณคือ : " + grade;
+}
+
+function temperature() {
+                const temperatureInput = document.getElementById('temperatureInput').value;
+                if (!isNaN(temperatureInput)) {
+                    const temperatureFahrenheit = (temperatureInput * 9 / 5) + 32;
+                    document.getElementById('temperature').innerHTML = `อุณหภูมิแปลงเป็นฟาเรนไฮต์ : ${temperatureFahrenheit.toFixed(2)} °F`;
+                } else {
+                    document.getElementById('temperature').innerHTML = 'กรุณาใส่อุณหภูมิที่ถูกต้อง';
+                }
+            }
+        
+    
+</script>
+
 
 <script>
 const xyValues = [
@@ -106,15 +201,6 @@ new Chart("barChart", {
   }
 });
   </script>
-
-<!-- End page content -->
-</div>
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
-
-
 
 </body>
 </html>

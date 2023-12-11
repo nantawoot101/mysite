@@ -1,0 +1,79 @@
+body{
+    background-color: black;
+    
+}
+
+.profile{
+    width: 400px;
+    height: 550px;
+    object-fit: cover;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px;
+    vertical-align: middle;
+
+    
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    
+  }
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+
+h1{
+    margin: 20px;
+    color: rgb(243, 75, 75) !important;
+}
+
+h2{
+    margin: 20px;
+    color: rgb(243, 75, 75) !important;
+}
+
+p{
+    color: white;
+    margin: 20px;
+}
+
+.p2{
+    color: black ;
+}
+
+
+body, html ,h1, h2,h4{
+    height: 100%;
+    font-family: "Inconsolata", sans-serif;
+  }
+  .box{
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    margin: 60px auto;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px 5px, rgba(0, 0, 0, 0.04) 0px 10px 10px 5px;
+    background-color: #fff
+  }
+
+  .h1_column{
+    text-align: center;
+    justify-content: center;
+  }
+
+  .li_style{
+    color: white;
+  }
+
+  .glowing-text {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffffff; /* สีตัวอักษร */
+    text-shadow: 0 0 10px #f12f2c, 0 0 20px #b70bec, 0 0 30px #a71603; /* เรืองแสง */
+  }
